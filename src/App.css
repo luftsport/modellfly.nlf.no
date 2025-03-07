@@ -1,0 +1,70 @@
+html,
+body,
+#root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+.markdown-light {
+}
+
+.markdown-dark {
+    color: #ffffff;
+}
+
+.markdown-dark a {
+    color: #ad54ff;
+}
+
+.markdown-light code {
+    background-color: #f6f7f8;
+
+    border: 0.1rem solid #0000001a;
+    border-radius: 0.4rem;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-size: 95%;
+    padding: 0.1rem 0.1rem;
+}
+
+.markdown-dark code {
+    background-color: #ffffff1a;
+    border: 0.1rem solid #0000001a;
+    border-radius: 0.4rem;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-size: 95%;
+    padding: 0.1rem 0.1rem;
+}
+
+.markdown-light blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+}
+
+.markdown-dark blockquote {
+    background: #292929;
+    border-left: 10px solid #111;
+}
+
+.markdown th,
+.markdown td {
+    padding: 4px;
+    padding-right: 20px;
+}
+
+.markdown-light tbody tr:nth-child(odd) {
+    background-color: #eee;
+}
+
+.markdown-dark tbody tr:nth-child(odd) {
+    background-color: #333;
+}
+
+.markdown img {
+    max-width: 100%;
+}

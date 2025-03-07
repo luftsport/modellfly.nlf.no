@@ -1,0 +1,22 @@
+title: FPV uten utkikksperson
+icon: goggles
+description: Sjekkliste for flyging med FPV-drone/modell uten bruk av utkikksperson
+explanation: Hvis alle sjekkpunkter kan besvares med JA innebærer det en akseptabel grad av risiko ved flyging i førstepersonsperspektiv (FPV) uten utkikksperson dersom flygingen foregår utenfor etablert modellflyplass. Sjekklisten skal medbringes ved flyging, og fylles ut av piloten før flyging finner sted.
+fields:
+  - title: Modellflygers navn
+    type: text
+  - title: Sted
+    type: text
+  - title: Dato
+    type: date
+checklist:
+  - title: Er hele flyområdet egnet til FPV-flyging uten utkikksperson, med hensyn til 3. parts og annen lufttrafikks sikkerhet?
+  - title: Har du gjort deg kjent med og tar hensyn til potensiell lufttrafikk i området?
+  - title: Vil all flyging foregå utenfor bebodd område, og unngå områder hvor det kan oppholde seg andre mennesker?
+  - title: Vil all flyging foregå mer enn 50 meter unna kjøretøy, bygning eller personer som ikke er under modellflygers kontroll, med unntak av under start og landing?
+  - title: Er det minst 5 km til nærmeste lufthavn, og vil all flyging foregå utenfor kontrollert luftrom, med mindre annet er avtalt med lufttrafikktjenesten?
+  - title: Er det tillatt å fly der?
+  - title: Vil all flyging foregå lavere enn 120 meter over terrenget?
+  - title: Veier modellen maksimalt 1 kg, inkludert batteri?
+  - title: Er failsafe programmert slik at energien i modellen reduseres ved evt. tap av kontroll, eksempelvis ved at propellen stopper?
+  - title: Er strobelys montert og aktivert?

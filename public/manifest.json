@@ -1,0 +1,15 @@
+{
+  "short_name": "NLF Modellfly",
+  "name": "NLF Modellfly",
+  "description": "Verktøy og ressurser for modellflygere",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4B0082",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "1392x1347"
+    }
+  ]
+}
