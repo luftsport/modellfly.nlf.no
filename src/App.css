@@ -68,3 +68,19 @@ body,
 .markdown img {
     max-width: 100%;
 }
+
+@media print {
+    .checklist-item {
+        padding: 0 !important;
+    }
+    
+    .hidden-print {
+        display: none;
+    }
+}
+
+@media screen {
+    .hidden-screen {
+        display: none;
+    }
+}
