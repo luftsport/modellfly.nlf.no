@@ -15,7 +15,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 const Layout = (): React.ReactElement => {
-    const [mode, setMode] = useLocalStorageState<'light' | 'dark'>('color_theme', { defaultValue: 'dark' });
+    const [mode, setMode] = useLocalStorageState<'light' | 'dark'>('color_theme', { defaultValue: 'light' });
 
     const colorMode = useMemo(
         () => ({
