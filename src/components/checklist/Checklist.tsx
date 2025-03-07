@@ -66,8 +66,8 @@ const Checklist = (): React.ReactElement => {
                             secondaryAction="JA"
                             sx={{
                                 borderBottom: '1px solid',
-                                borderBottomColor: theme.palette.grey[300],
-                                backgroundColor: theme.palette.grey[100],
+                                borderBottomColor: theme.palette.mode === 'light' ? theme.palette.grey[300] : theme.palette.grey[600],
+                                backgroundColor: theme.palette.mode === 'light' ? theme.palette.grey[100] : theme.palette.grey[800],
                                 fontWeight: 'bold'
                             }}>
                             <ListItemAvatar>&nbsp;</ListItemAvatar>
@@ -77,7 +77,10 @@ const Checklist = (): React.ReactElement => {
                             <ListItem
                                 key={item.title}
                                 secondaryAction={<Checkbox edge="end" onChange={handleToggle(index)} checked={checked.includes(index)} />}
-                                sx={{ borderBottom: '1px solid', borderBottomColor: theme.palette.grey[300] }}>
+                                sx={{
+                                    borderBottom: '1px solid',
+                                    borderBottomColor: theme.palette.mode === 'light' ? theme.palette.grey[300] : theme.palette.grey[600]
+                                }}>
                                 <ListItemButton onClick={handleToggle(index)}>
                                     <ListItemAvatar>
                                         <b>{index + 1}.</b>
