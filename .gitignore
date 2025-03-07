@@ -131,8 +131,7 @@ dist
 
 # Generated files
 
-/src/data/procedures.json
-/src/data/avatars.json
+/src/data/checklists.json
 /src/data/config.json
 /src/data/build.json
 
