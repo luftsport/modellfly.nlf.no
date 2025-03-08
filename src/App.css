@@ -110,7 +110,16 @@ li {
 
 /* PDF Export styles */
 
-.pdf-print {
+#checklist-container.pdf-print {
+    background-color: transparent !important;
+    background-image: none !important;
+    padding: 0 !important;
+
+    .MuiPaper-root {
+        box-shadow: none !important;
+        border: none !important;
+    }
+
     .checklist-item {
         padding: 0 !important;
     }
@@ -123,24 +132,11 @@ li {
         display: block !important;
     }
     
-    .MuiPaper-elevation {
-        box-shadow: none !important;
-        border: none !important;
-    }
-
-    .MuiPaper-root {
-        background-color: transparent !important;
-        padding: 0 !important;
-    }
-
-    #checklist-container {
-        background-color: transparent !important;
-        padding: 0 !important;
-        box-shadow: none !important;
-        border: none !important;
-    }
-    
     h1 {
         margin-bottom: 0 !important;
-    }   
+    } 
+}
+
+.checklist-container-dark {
+    background-color: #121212 !important;
 }

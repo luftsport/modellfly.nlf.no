@@ -55,17 +55,20 @@ const Checklist = (): React.ReactElement => {
         }
 
         doc.classList.add('pdf-print');
-        doc.style.backgroundColor = 'transparent';
-        doc.style.boxShadow = 'none';
+        if (theme.palette.mode === 'dark') {
+            doc.classList.add('checklist-container-dark');
+        }
 
         await html2pdf()
-            .set({ pagebreak: { mode: ['avoid-all', 'css', 'legacy'] } })
+            .set({
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+                html2canvas: { backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.default : '#ffffff' }
+            })
             .from(doc)
             .save(`${filenamify(checklist?.title ?? 'Sjekkliste')}-${dayjs().format('YYYY-MM-DD-HHmm')}.pdf`);
 
         doc.classList.remove('pdf-print');
-        doc.style.backgroundColor = '';
-        doc.style.boxShadow = '';
+        doc.classList.remove('checklist-container-dark');
     };
 
     const reset = () => {
@@ -77,8 +80,8 @@ const Checklist = (): React.ReactElement => {
     }
 
     return (
-        <Container maxWidth="lg" sx={{ paddingBottom: theme.spacing(2) }}>
-            <Grid2 container spacing={theme.spacing(2)} component={Paper} padding={theme.spacing(2)} ref={contentRef} id="checklist-container">
+        <Container maxWidth="lg" sx={{ paddingBottom: theme.spacing(2) }} id="checklist-container">
+            <Grid2 container spacing={theme.spacing(2)} component={Paper} padding={theme.spacing(2)} ref={contentRef}>
                 <Grid2 size={12}>
                     <Typography variant="h4" component="h1" sx={{ color: theme.palette.text.primary, marginBottom: theme.spacing(5) }}>
                         <ChecklistIcon checklist={checklist} /> {checklist?.title}
