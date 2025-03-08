@@ -1,7 +1,7 @@
 {
   "name": "modellfly.nlf.no",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -16,8 +16,9 @@
     "@mui/material": "^6.4.1",
     "@mui/x-date-pickers": "^7.27.3",
     "dayjs": "^1.11.13",
-    "file-saver": "^2.0.5",
+    "filenamify": "^6.0.0",
     "flag-icons": "^7.3.2",
+    "html2pdf.js": "^0.10.3",
     "mdi-material-ui": "^7.9.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -28,7 +29,6 @@
     "use-local-storage-state": "^19.5.0"
   },
   "devDependencies": {
-    "@types/file-saver": "^2.0.7",
     "@types/node": "^20.17.13",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",

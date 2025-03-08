@@ -89,6 +89,7 @@ const Layout = (): React.ReactElement => {
                                 margin: 0
                             }}>
                             <Container
+                                id="main-content"
                                 sx={{
                                     flex: '1 0 auto',
                                     paddingTop: theme.spacing(2),

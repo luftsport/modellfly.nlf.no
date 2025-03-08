@@ -1,16 +1,11 @@
 import { FormControl, TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
+import React, { useState } from 'react';
 
 const ChecklistField = ({ field }: { field: any }): React.ReactElement => {
-    const [value, setValue] = useState<any>();
-
-    useEffect(() => {
-        if (field.type === 'date') {
-            setValue(dayjs());
-        }
-    }, [field]);
+    const [value, setValue] = useState<any>('');
+    const [valueDate, setValueDate] = useState<any>(dayjs());
 
     if (!field) {
         return <></>;
@@ -19,12 +14,34 @@ const ChecklistField = ({ field }: { field: any }): React.ReactElement => {
     switch (field.type) {
         case 'text':
             return (
-                <FormControl fullWidth>
-                    <TextField fullWidth label={field.title} variant="outlined" value={value} onChange={(e) => setValue(e.target.value)} />
-                </FormControl>
+                <>
+                    <div className="hidden-print">
+                        <FormControl fullWidth>
+                            <TextField fullWidth label={field.title} variant="outlined" value={value} onChange={(e) => setValue(e.target.value)} />
+                        </FormControl>
+                    </div>
+                    <div className="hidden-screen">
+                        {field.title}: <strong>{value}</strong>
+                    </div>
+                </>
             );
         case 'date':
-            return <DatePicker label={field.title} value={value} onChange={(newValue) => setValue(newValue)} />;
+            return (
+                <>
+                    <div className="hidden-print">
+                        <DatePicker label={field.title} value={valueDate} onChange={(newValue) => setValueDate(newValue)} />
+                    </div>
+                    <div className="hidden-screen">
+                        {field.title}: <strong>{valueDate?.format('YYYY-MM-DD')}</strong>
+                    </div>
+                </>
+            );
+        case 'today':
+            return (
+                <div>
+                    {field.title}: <strong>{valueDate?.format('YYYY-MM-DD')}</strong>
+                </div>
+            );
         default:
             return <></>;
     }

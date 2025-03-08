@@ -16,7 +16,7 @@
       },
       {
         "title": "Dato",
-        "type": "date"
+        "type": "today"
       }
     ],
     "checklist": [

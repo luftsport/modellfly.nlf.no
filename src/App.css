@@ -70,6 +70,12 @@ body,
 }
 
 @media print {
+    html, body {
+        height: initial !important;
+        overflow: initial !important;
+        -webkit-print-color-adjust: exact;
+      }
+
     .checklist-item {
         padding: 0 !important;
     }
@@ -77,10 +83,64 @@ body,
     .hidden-print {
         display: none;
     }
+
+    .MuiPaper-elevation {
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    h1 {
+        margin-bottom: 0 !important;
+    }
+    
+    body {
+        background-color: transparent !important;
+    }
 }
 
 @media screen {
     .hidden-screen {
         display: none;
     }
+}
+
+li {
+    break-inside: avoid !important;
+}
+
+/* PDF Export styles */
+
+.pdf-print {
+    .checklist-item {
+        padding: 0 !important;
+    }
+    
+    .hidden-print {
+        display: none;
+    }
+
+    .hidden-screen {
+        display: block !important;
+    }
+    
+    .MuiPaper-elevation {
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    .MuiPaper-root {
+        background-color: transparent !important;
+        padding: 0 !important;
+    }
+
+    #checklist-container {
+        background-color: transparent !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+    h1 {
+        margin-bottom: 0 !important;
+    }   
 }
