@@ -26,6 +26,7 @@ const Checklist = (): React.ReactElement => {
     const reactToPrintFn = useReactToPrint({ contentRef });
 
     const [checked, setChecked] = React.useState<number[]>([]);
+    const completed = checked.length === checklist?.checklist.length;
 
     useEffect(() => {
         setTitle(checklist?.title ?? 'Sjekkliste');
@@ -132,7 +133,7 @@ const Checklist = (): React.ReactElement => {
                         ))}
                     </List>
                 </Grid2>
-                {checked.length === checklist.checklist.length && (
+                {completed && (
                     <Grid2 size={12}>
                         <Alert severity="success">Sjekkliste fullført</Alert>
                     </Grid2>
@@ -142,13 +143,19 @@ const Checklist = (): React.ReactElement => {
                 </Grid2>
                 <Grid2 size={12} sx={{ textAlign: 'center' }}>
                     <div className="hidden-print">
-                        <Button startIcon={<PrintIcon />} variant="contained" color="primary" size="large" onClick={print} sx={{ margin: theme.spacing(2) }}>
+                        <Button
+                            startIcon={<PrintIcon />}
+                            variant="contained"
+                            color={completed ? 'success' : 'warning'}
+                            size="large"
+                            onClick={print}
+                            sx={{ margin: theme.spacing(2) }}>
                             Skriv ut
                         </Button>
                         <Button
                             startIcon={<SaveAltIcon />}
                             variant="contained"
-                            color="primary"
+                            color={completed ? 'success' : 'warning'}
                             size="large"
                             onClick={savePdf}
                             sx={{ margin: theme.spacing(2) }}>
