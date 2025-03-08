@@ -8,7 +8,7 @@ fields:
   - title: Sted
     type: text
   - title: Dato
-    type: date
+    type: today
 checklist:
   - title: Er hele flyområdet egnet til FPV-flyging uten utkikksperson, med hensyn til 3. parts og annen lufttrafikks sikkerhet?
   - title: Har du gjort deg kjent med og tar hensyn til potensiell lufttrafikk i området?
