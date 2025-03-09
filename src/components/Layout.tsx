@@ -2,7 +2,7 @@ import { PaletteMode, responsiveFontSizes } from '@mui/material';
 import Container from '@mui/material/Container';
 import { createTheme } from '@mui/material/styles';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Outlet } from 'react-router-dom';
 import useLocalStorageState from 'use-local-storage-state';
 import UnhandledExceptionBoundary from '../components/common/UnhandledExceptionBoundary';
@@ -11,11 +11,14 @@ import Header from './Header';
 import ScrollToTop from './ScrollToTop';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { useFrameDetection } from '../hooks/useFrameDetection';
 
 export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 const Layout = (): React.ReactElement => {
     const [mode, setMode] = useLocalStorageState<'light' | 'dark'>('color_theme', { defaultValue: 'light' });
+
+    const iAmFramed = useFrameDetection();
 
     const colorMode = useMemo(
         () => ({
@@ -73,13 +76,19 @@ const Layout = (): React.ReactElement => {
         }
     };
 
+    useEffect(() => {
+        if (iAmFramed) {
+            setMode('light');
+        }
+    }, [iAmFramed, setMode]);
+
     return (
         <UnhandledExceptionBoundary>
             <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="nb">
                 <ColorModeContext.Provider value={colorMode}>
                     <ThemeProvider theme={theme}>
                         <ScrollToTop />
-                        <Header />
+                        {!iAmFramed && <Header />}
                         <Container
                             maxWidth={false}
                             component="main"
@@ -96,14 +105,14 @@ const Layout = (): React.ReactElement => {
                                     paddingBottom: theme.spacing(2),
                                     paddingLeft: 0,
                                     paddingRight: 0,
-                                    backgroundColor: theme.palette.mode === 'light' ? '#fafafa' : '#121212'
+                                    backgroundColor: iAmFramed ? '#fafafa' : theme.palette.mode === 'light' ? '#fafafa' : '#121212'
                                 }}
                                 maxWidth={false}>
                                 <UnhandledExceptionBoundary>
                                     <Outlet />
                                 </UnhandledExceptionBoundary>
                             </Container>
-                            <Footer />
+                            {!iAmFramed && <Footer />}
                         </Container>
                     </ThemeProvider>
                 </ColorModeContext.Provider>
