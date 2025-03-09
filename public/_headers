@@ -3,5 +3,5 @@
   X-Content-Type-Options: nosniff
   Strict-Transport-Security: max-age=31536000;
   Referrer-Policy: no-referrer-when-downgrade
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; style-src-attr 'unsafe-inline'; img-src 'self' data:; connect-src 'self' cloudflareinsights.com; object-src 'none'; frame-src 'none'; frame-ancestors: https://nlf.no/;
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; style-src-attr 'unsafe-inline'; img-src 'self' data:; connect-src 'self' cloudflareinsights.com; object-src 'none'; frame-src 'none'; frame-ancestors: nlf.no;
   Permissions-Policy: accelerometer=(), autoplay=(), camera=(), cross-origin-isolated=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()
