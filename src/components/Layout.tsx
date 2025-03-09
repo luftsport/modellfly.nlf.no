@@ -107,7 +107,7 @@ const Layout = (): React.ReactElement => {
                                     paddingBottom: !isMobile ? theme.spacing(2) : 0,
                                     paddingLeft: 0,
                                     paddingRight: 0,
-                                    backgroundColor: iAmFramed ? '#fafafa' : theme.palette.mode === 'light' ? '#fafafa' : '#121212'
+                                    backgroundColor: iAmFramed ? '#ffffff' : theme.palette.mode === 'light' ? '#fafafa' : '#121212'
                                 }}
                                 maxWidth={false}>
                                 <UnhandledExceptionBoundary>
