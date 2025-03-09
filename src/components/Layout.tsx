@@ -1,17 +1,17 @@
-import { PaletteMode, responsiveFontSizes } from '@mui/material';
+import { PaletteMode, responsiveFontSizes, useMediaQuery } from '@mui/material';
 import Container from '@mui/material/Container';
 import { createTheme } from '@mui/material/styles';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import React, { useEffect, useMemo } from 'react';
 import { Outlet } from 'react-router-dom';
 import useLocalStorageState from 'use-local-storage-state';
 import UnhandledExceptionBoundary from '../components/common/UnhandledExceptionBoundary';
+import { useFrameDetection } from '../hooks/useFrameDetection';
 import Footer from './Footer';
 import Header from './Header';
 import ScrollToTop from './ScrollToTop';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { useFrameDetection } from '../hooks/useFrameDetection';
 
 export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -76,6 +76,8 @@ const Layout = (): React.ReactElement => {
         }
     };
 
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'), { defaultMatches: true });
+
     useEffect(() => {
         if (iAmFramed) {
             setMode('light');
@@ -101,8 +103,8 @@ const Layout = (): React.ReactElement => {
                                 id="main-content"
                                 sx={{
                                     flex: '1 0 auto',
-                                    paddingTop: theme.spacing(2),
-                                    paddingBottom: theme.spacing(2),
+                                    paddingTop: !isMobile ? theme.spacing(2) : 0,
+                                    paddingBottom: !isMobile ? theme.spacing(2) : 0,
                                     paddingLeft: 0,
                                     paddingRight: 0,
                                     backgroundColor: iAmFramed ? '#fafafa' : theme.palette.mode === 'light' ? '#fafafa' : '#121212'

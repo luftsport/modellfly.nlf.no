@@ -12,7 +12,7 @@ const Home = (): React.ReactElement => {
     }, []);
 
     return (
-        <Container maxWidth="lg" sx={{ paddingBottom: theme.spacing(2) }}>
+        <Container maxWidth="lg" sx={{ paddingTop: theme.spacing(2) }}>
             <Typography variant="h4" component="h1" sx={{ color: theme.palette.text.primary, marginBottom: theme.spacing(5) }}>
                 Velkommen til NLF Modellfly
             </Typography>

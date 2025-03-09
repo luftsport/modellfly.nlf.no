@@ -53,7 +53,7 @@ const About = (): React.ReactElement => {
     }, []);
 
     return (
-        <Container maxWidth="lg" sx={{ paddingBottom: '10px' }}>
+        <Container maxWidth="lg" sx={{ paddingTop: '10px' }}>
             <Grid2 container rowSpacing={theme.spacing(3)}>
                 <Grid2 size={12}>
                     <Typography variant="h3" sx={{ paddingBottom: theme.spacing(1), color: theme.palette.text.primary }}>

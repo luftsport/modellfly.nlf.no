@@ -1,6 +1,6 @@
 import PrintIcon from '@mui/icons-material/Print';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
-import { Alert, Button, Checkbox, Grid2, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Paper, Typography } from '@mui/material';
+import { Alert, Button, Checkbox, Grid2, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Paper, Typography, useMediaQuery } from '@mui/material';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
 import dayjs from 'dayjs';
@@ -19,6 +19,7 @@ const Checklist = (): React.ReactElement => {
     const { slug } = useParams();
 
     const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'), { defaultMatches: true });
 
     const checklist = useMemo(() => ChecklistData.filter((c) => c.slug === slug).at(0), [slug]);
 
@@ -81,15 +82,24 @@ const Checklist = (): React.ReactElement => {
     }
 
     return (
-        <Container maxWidth="lg" sx={{ paddingBottom: theme.spacing(2) }} id="checklist-container">
-            <Grid2 container spacing={theme.spacing(2)} component={Paper} padding={theme.spacing(2)} ref={contentRef}>
-                <Grid2 size={12}>
-                    <Typography variant="h4" component="h1" sx={{ color: theme.palette.text.primary, marginBottom: theme.spacing(5) }}>
+        <Container maxWidth="lg" sx={{ padding: 0 }} id="checklist-container">
+            <Grid2
+                container
+                spacing={theme.spacing(2)}
+                component={Paper}
+                ref={contentRef}
+                elevation={isMobile ? 0 : 1}
+                sx={{ backgroundColor: isMobile ? 'transparent' : undefined }}>
+                <Grid2 size={12} paddingLeft={theme.spacing(2)} paddingRight={theme.spacing(2)}>
+                    <Typography
+                        variant="h4"
+                        component="h1"
+                        sx={{ color: theme.palette.text.primary, marginTop: theme.spacing(1), marginBottom: theme.spacing(2) }}>
                         <ChecklistIcon checklist={checklist} /> {checklist?.title}
                     </Typography>
                 </Grid2>
                 {checklist.fields?.length > 0 && (
-                    <Grid2 size={12}>
+                    <Grid2 size={12} paddingLeft={theme.spacing(2)} paddingRight={theme.spacing(2)}>
                         <Grid2 container spacing={theme.spacing(2)}>
                             {checklist.fields.map((field, index) => (
                                 <Grid2 key={index} size={12}>
@@ -99,10 +109,10 @@ const Checklist = (): React.ReactElement => {
                         </Grid2>
                     </Grid2>
                 )}
-                <Grid2 size={12}>
+                <Grid2 size={12} px={{ xs: 0, sm: 2 }}>
                     <List>
                         <ListItem
-                            secondaryAction="JA"
+                            secondaryAction={<div style={{ marginRight: theme.spacing(2) }}>JA</div>}
                             sx={{
                                 borderBottom: '1px solid',
                                 borderBottomColor: theme.palette.mode === 'light' ? theme.palette.grey[300] : theme.palette.grey[600],
@@ -118,7 +128,15 @@ const Checklist = (): React.ReactElement => {
                             <ListItem
                                 className="checklist-item"
                                 key={item.title}
-                                secondaryAction={<Checkbox edge="end" onChange={handleToggle(index)} checked={checked.includes(index)} />}
+                                secondaryAction={
+                                    <Checkbox
+                                        edge="end"
+                                        onChange={handleToggle(index)}
+                                        color="success"
+                                        checked={checked.includes(index)}
+                                        sx={{ marginRight: theme.spacing(1) }}
+                                    />
+                                }
                                 sx={{
                                     borderBottom: '1px solid',
                                     borderBottomColor: theme.palette.mode === 'light' ? theme.palette.grey[300] : theme.palette.grey[600]
@@ -127,21 +145,21 @@ const Checklist = (): React.ReactElement => {
                                     <ListItemAvatar>
                                         <b>{index + 1}.</b>
                                     </ListItemAvatar>
-                                    <ListItemText primary={item.title} />
+                                    <ListItemText primary={item.title} sx={{ paddingRight: theme.spacing(2) }} />
                                 </ListItemButton>
                             </ListItem>
                         ))}
                     </List>
                 </Grid2>
                 {completed && (
-                    <Grid2 size={12}>
+                    <Grid2 size={12} paddingLeft={theme.spacing(2)} paddingRight={theme.spacing(2)}>
                         <Alert severity="success">Sjekkliste fullført</Alert>
                     </Grid2>
                 )}
-                <Grid2 size={12}>
+                <Grid2 size={12} paddingLeft={theme.spacing(2)} paddingRight={theme.spacing(2)}>
                     <Typography variant="body1">{checklist.explanation}</Typography>
                 </Grid2>
-                <Grid2 size={12} sx={{ textAlign: 'center' }}>
+                <Grid2 size={12} sx={{ textAlign: 'center' }} paddingLeft={theme.spacing(2)} paddingRight={theme.spacing(2)}>
                     <div className="hidden-print">
                         <Button
                             startIcon={<PrintIcon />}
