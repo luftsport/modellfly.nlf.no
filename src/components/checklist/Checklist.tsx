@@ -89,7 +89,7 @@ const Checklist = (): React.ReactElement => {
                 component={Paper}
                 ref={contentRef}
                 elevation={isMobile ? 0 : 1}
-                sx={{ backgroundColor: isMobile ? 'transparent' : undefined }}>
+                sx={{ backgroundColor: isMobile ? theme.palette.background.default : undefined }}>
                 <Grid2 size={12} paddingLeft={theme.spacing(2)} paddingRight={theme.spacing(2)}>
                     <Typography
                         variant="h4"
