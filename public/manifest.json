@@ -8,8 +8,20 @@
   "background_color": "#ffffff",
   "icons": [
     {
-      "src": "icon.svg",
+      "src": "/icon.svg",
       "sizes": "1392x1347"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "469x323"
+    },
+    {
+      "src": "/nlf-120.png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "/nlf-180.png",
+      "sizes": "180x180"
     }
   ]
 }
